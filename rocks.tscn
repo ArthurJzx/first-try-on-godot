@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://2vqqqec00j38"]
+[gd_scene load_steps=3 format=3 uid="uid://2vqqqec00j38"]
 
 [ext_resource type="Texture2D" uid="uid://uildeoa7nj4c" path="res://image_2024_12_26_102.png" id="1_27h8i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71xoe"]
+radius = 1061.0
 
 [node name="ROCKS" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_27h8i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+position = Vector2(81, 38)
+shape = SubResource("CircleShape2D_71xoe")
