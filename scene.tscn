@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccunl16wou262"]
+[gd_scene load_steps=3 format=3 uid="uid://ccunl16wou262"]
 
+[ext_resource type="PackedScene" uid="uid://2vqqqec00j38" path="res://rocks.tscn" id="1_7ak51"]
 [ext_resource type="PackedScene" uid="uid://ubqqn5ukjqr5" path="res://character.tscn" id="1_63g6e"]
 
 [node name="scene" type="Node2D"]
+
+[node name="ROCKS" parent="." instance=ExtResource("1_7ak51")]
+position = Vector2(5263, 45)
 
 [node name="character" parent="." instance=ExtResource("1_63g6e")]
 
