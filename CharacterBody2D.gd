@@ -1,16 +1,18 @@
 extends CharacterBody2D
 
-var grip = 1000
-var SPEED = 100.0
-func acceleration():
-	grip =+ SPEED
+const SPEED = 3000.0
+const ACCEL =0.5
 
-func _physics_process(delta):
-	var direction = Input.get_vector("left", "right", "up", "down")"res://icon.svg"
-	if direction:
-		velocity = direction * SPEED
-	else:
-		velocity.x * move_toward(velocity.x, grip, SPEED)
-		velocity.y * move_toward(velocity.y, grip, SPEED)
-	acceleration()
+var input: Vector2
+
+func get_input():
+	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	return input.normalized()
+
+func _process (delta):
+	var playerInput = get_input()
+
+	velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
+
 	move_and_slide()
