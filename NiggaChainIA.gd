@@ -16,3 +16,4 @@ func becomeRichEasily():
 #calm down liberals, this is called dark humor
 #all fun and shi
 #https://youtu.be/_mkLLtZq2x0?si=DA7_53F4lf0O3-Pr
+#imFinnaBridge

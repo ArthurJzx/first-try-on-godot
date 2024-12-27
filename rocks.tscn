@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://2vqqqec00j38"]
 
-[ext_resource type="Texture2D" uid="uid://uildeoa7nj4c" path="res://image_2024_12_26_102.png" id="1_27h8i"]
+[ext_resource type="Texture2D" uid="uid://uildeoa7nj4c" path="res://MASSIVE rock.png" id="1_27h8i"]
 [ext_resource type="Script" path="res://rocks.gd" id="1_vpioy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_71xoe"]
