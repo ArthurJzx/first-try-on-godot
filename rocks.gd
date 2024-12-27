@@ -8,8 +8,8 @@ var varY
 #set rendom value for size and speed of the direction
 func _ready():
 	varY = rng.randi_range(0, 30)
-	varX = rng.randi_range(-30, -100)
-	apply_scale(Vector2(10 / rng.randi_range(1, 20),10 / rng.randi_range(1, 20)))
+	varX = rng.randi_range(-20, -100)
+	apply_scale(Vector2(rng.randi_range(1, 3), rng.randi_range(1, 3)))
 
 func _process(delta):
 	rotation_degrees =+ 1
