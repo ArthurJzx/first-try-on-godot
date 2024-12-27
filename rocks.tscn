@@ -7,13 +7,13 @@
 radius = 1061.0
 
 [node name="ROCKS" type="Node2D"]
+
+[node name="rocks" type="CharacterBody2D" parent="."]
 script = ExtResource("1_vpioy")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="rocks"]
+texture = ExtResource("1_27h8i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rocks"]
 position = Vector2(81, 38)
 shape = SubResource("CircleShape2D_71xoe")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("1_27h8i")

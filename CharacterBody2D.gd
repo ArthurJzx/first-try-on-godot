@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 3000.0
 const ACCEL =0.5
-
+var BACKUP = -20
 var input: Vector2
 
 func get_input():
@@ -14,5 +14,5 @@ func _process (delta):
 	var playerInput = get_input()
 
 	velocity = lerp(velocity, playerInput * SPEED, delta * ACCEL)
-
+	translate(Vector2(BACKUP, 0))
 	move_and_slide()

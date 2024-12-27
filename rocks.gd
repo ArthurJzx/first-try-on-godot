@@ -1,20 +1,20 @@
-extends Node2D
+extends CharacterBody2D
 
 var rng = RandomNumberGenerator.new()
-var finalPos
+var varX
+var varY 
 
-func finalPosition():
-	finalPos = rng.randi_range(-3000,3000)
-func randomPosition():
-	position.x = 50
-	position.y = 0
-	scale.x = 1
-	scale.y = 1
-	rotation_degrees = 0
 
-func test():
-	print(rng)
+#set rendom value for size and speed of the direction
+func _ready():
+	varY = rng.randi_range(0, 30)
+	varX = rng.randi_range(-30, -100)
+	apply_scale(Vector2(10 / rng.randi_range(1, 20),10 / rng.randi_range(1, 20)))
 
 func _process(delta):
 	rotation_degrees =+ 1
-	translate(Vector2(-1.0, 3000))
+	translate(Vector2(varX, varY))
+	move_and_slide()
+
+func _on_area_2D_body_entered(body):
+	print("bru")
