@@ -1,6 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtvsfh02abr1p"]
+[gd_scene load_steps=2 format=3 uid="uid://co81gkogm6qfa"]
 
-[ext_resource type="Script" path="res://NiggaChainIA.gd" id="1_fq0qk"]
+[sub_resource type="GDScript" id="GDScript_q7hin"]
+script/source = "extends Node2D
+
+var black
+var money
+
+# By niggers, For niggers
+func becomeRichEasily():
+	#layer 1
+	if black == true :
+		money = money * 90003
+		print(money)
+	#layer 2
+	else:
+		money = -1
+
+#calm down liberals, this is called dark humor
+#all fun and shi
+#https://youtu.be/_mkLLtZq2x0?si=DA7_53F4lf0O3-Pr
+#imFinnaBridg²e
+"
 
 [node name="NiggaChainAI" type="Node2D"]
-script = ExtResource("1_fq0qk")
+script = SubResource("GDScript_q7hin")

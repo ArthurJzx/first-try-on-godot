@@ -1,0 +1,87 @@
+[gd_scene load_steps=16 format=3 uid="uid://ccunl16wou262"]
+
+[ext_resource type="Script" path="res://rocks.gd" id="1_kycp3"]
+[ext_resource type="Texture2D" uid="uid://bumuc2osaivms" path="res://background test.png" id="1_yrdwr"]
+[ext_resource type="Texture2D" uid="uid://uildeoa7nj4c" path="res://MASSIVE rock.png" id="2_uendq"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="3_430cu"]
+[ext_resource type="Script" path="res://addons/block_code/block_code_node/block_code.gd" id="4_8tvfk"]
+[ext_resource type="Texture2D" uid="uid://bqcgvh8muh0ni" path="res://icon.svg" id="4_sebhx"]
+[ext_resource type="Script" path="res://addons/block_code/serialization/block_serialization.gd" id="5_hl8rh"]
+[ext_resource type="Script" path="res://addons/block_code/serialization/block_serialization_tree.gd" id="6_1nvkf"]
+[ext_resource type="Script" path="res://addons/block_code/serialization/block_script_serialization.gd" id="7_aqe5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igu8j"]
+size = Vector2(2960, 17062.3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_523fb"]
+radius = 1061.0
+
+[sub_resource type="Resource" id="Resource_oalom"]
+script = ExtResource("5_hl8rh")
+name = &"ready"
+children = Array[ExtResource("5_hl8rh")]([])
+arguments = {}
+
+[sub_resource type="Resource" id="Resource_8sqy5"]
+script = ExtResource("6_1nvkf")
+root = SubResource("Resource_oalom")
+canvas_position = Vector2(54, 47)
+
+[sub_resource type="Resource" id="Resource_6xtxs"]
+script = ExtResource("7_aqe5e")
+script_inherits = "CharacterBody2D"
+block_serialization_trees = Array[ExtResource("6_1nvkf")]([SubResource("Resource_8sqy5")])
+variables = Array[Resource("res://addons/block_code/code_generation/variable_definition.gd")]([])
+generated_script = "extends CharacterBody2D"
+version = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_roqjy"]
+size = Vector2(117, 116)
+
+[node name="scene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(1, 1.00811)
+zoom = Vector2(0.18, 0.18)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(36, 20)
+scale = Vector2(26.925, 26.925)
+texture = ExtResource("1_yrdwr")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-5442, -36)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, -5)
+shape = SubResource("RectangleShape2D_igu8j")
+
+[node name="rock" type="Node2D" parent="."]
+
+[node name="rocks" type="CharacterBody2D" parent="rock"]
+script = ExtResource("1_kycp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="rock/rocks"]
+texture = ExtResource("2_uendq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rock/rocks"]
+position = Vector2(81, 38)
+shape = SubResource("CircleShape2D_523fb")
+
+[node name="BlockCode" type="Node" parent="rock/rocks"]
+script = ExtResource("4_8tvfk")
+block_script = SubResource("Resource_6xtxs")
+
+[node name="player" type="Node" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="player"]
+script = ExtResource("3_430cu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/CharacterBody2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_roqjy")
+
+[node name="Sprite2D" type="Sprite2D" parent="player/CharacterBody2D"]
+texture = ExtResource("4_sebhx")
+
+[connection signal="area_entered" from="Area2D" to="rock/rocks" method="_on_area_2d_area_entered"]

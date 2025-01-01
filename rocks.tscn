@@ -1,19 +1,248 @@
-[gd_scene load_steps=4 format=3 uid="uid://2vqqqec00j38"]
+[gd_scene load_steps=38 format=3 uid="uid://2vqqqec00j38"]
 
 [ext_resource type="Texture2D" uid="uid://uildeoa7nj4c" path="res://MASSIVE rock.png" id="1_27h8i"]
-[ext_resource type="Script" path="res://rocks.gd" id="1_vpioy"]
+[ext_resource type="Script" path="res://addons/block_code/block_code_node/block_code.gd" id="2_3k3a2"]
+[ext_resource type="Script" path="res://addons/block_code/serialization/block_serialization.gd" id="3_pr7ix"]
+[ext_resource type="Script" path="res://addons/block_code/serialization/block_serialization_tree.gd" id="4_wyhhg"]
+[ext_resource type="Script" path="res://addons/block_code/serialization/value_block_serialization.gd" id="5_8r2uc"]
+[ext_resource type="Script" path="res://addons/block_code/serialization/block_script_serialization.gd" id="6_t602o"]
+[ext_resource type="Script" path="res://addons/block_code/code_generation/variable_definition.gd" id="7_hsmaw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_71xoe"]
+[sub_resource type="GDScript" id="GDScript_m4xu7"]
+script/source = "extends CharacterBody2D
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wwoua"]
 radius = 1061.0
+
+[sub_resource type="Resource" id="Resource_aebef"]
+script = ExtResource("3_pr7ix")
+name = &"set_var_SPEED"
+children = Array[ExtResource("3_pr7ix")]([])
+arguments = {
+"value": Vector2(-20, 0)
+}
+
+[sub_resource type="Resource" id="Resource_73wir"]
+script = ExtResource("3_pr7ix")
+name = &"ready"
+children = Array[ExtResource("3_pr7ix")]([SubResource("Resource_aebef")])
+arguments = {}
+
+[sub_resource type="Resource" id="Resource_wrep3"]
+script = ExtResource("4_wyhhg")
+root = SubResource("Resource_73wir")
+canvas_position = Vector2(54, 47)
+
+[sub_resource type="Resource" id="Resource_xe4yi"]
+script = ExtResource("3_pr7ix")
+name = &"Node2D_change_rotation_degrees"
+children = Array[ExtResource("3_pr7ix")]([])
+arguments = {
+"value": 5.0
+}
+
+[sub_resource type="Resource" id="Resource_65dau"]
+script = ExtResource("5_8r2uc")
+name = &"get_var_SPEED"
+arguments = {}
+
+[sub_resource type="Resource" id="Resource_68tpo"]
+script = ExtResource("3_pr7ix")
+name = &"Node2D_change_position"
+children = Array[ExtResource("3_pr7ix")]([])
+arguments = {
+"value": SubResource("Resource_65dau")
+}
+
+[sub_resource type="Resource" id="Resource_hkqip"]
+script = ExtResource("5_8r2uc")
+name = &"Node2D_get_position"
+arguments = {}
+
+[sub_resource type="Resource" id="Resource_dl7ur"]
+script = ExtResource("5_8r2uc")
+name = &"vector2_x"
+arguments = {
+"vector2": SubResource("Resource_hkqip")
+}
+
+[sub_resource type="Resource" id="Resource_udyef"]
+script = ExtResource("5_8r2uc")
+name = &"compare"
+arguments = {
+"float1": SubResource("Resource_dl7ur"),
+"float2": -5000.0,
+"op": "<"
+}
+
+[sub_resource type="Resource" id="Resource_glb6j"]
+script = ExtResource("5_8r2uc")
+name = &"randf_range"
+arguments = {
+"from": -2000.0,
+"to": 2000.0
+}
+
+[sub_resource type="Resource" id="Resource_1b6ph"]
+script = ExtResource("5_8r2uc")
+name = &"vector2"
+arguments = {
+"x": 5000.0,
+"y": SubResource("Resource_glb6j")
+}
+
+[sub_resource type="Resource" id="Resource_xaay2"]
+script = ExtResource("3_pr7ix")
+name = &"Node2D_set_position"
+children = Array[ExtResource("3_pr7ix")]([])
+arguments = {
+"value": SubResource("Resource_1b6ph")
+}
+
+[sub_resource type="Resource" id="Resource_fhy5b"]
+script = ExtResource("5_8r2uc")
+name = &"randf_range"
+arguments = {
+"from": 0.5,
+"to": 1.0
+}
+
+[sub_resource type="Resource" id="Resource_jtpq3"]
+script = ExtResource("5_8r2uc")
+name = &"randf_range"
+arguments = {
+"from": 0.5,
+"to": 2.0
+}
+
+[sub_resource type="Resource" id="Resource_qti1m"]
+script = ExtResource("5_8r2uc")
+name = &"vector2"
+arguments = {
+"x": SubResource("Resource_fhy5b"),
+"y": SubResource("Resource_jtpq3")
+}
+
+[sub_resource type="Resource" id="Resource_o4uty"]
+script = ExtResource("3_pr7ix")
+name = &"Node2D_set_scale"
+children = Array[ExtResource("3_pr7ix")]([])
+arguments = {
+"value": SubResource("Resource_qti1m")
+}
+
+[sub_resource type="Resource" id="Resource_qso1e"]
+script = ExtResource("5_8r2uc")
+name = &"get_var_SPEED"
+arguments = {}
+
+[sub_resource type="Resource" id="Resource_rvn0v"]
+script = ExtResource("5_8r2uc")
+name = &"vector2_x"
+arguments = {
+"vector2": SubResource("Resource_qso1e")
+}
+
+[sub_resource type="Resource" id="Resource_d8h3f"]
+script = ExtResource("5_8r2uc")
+name = &"subtract"
+arguments = {
+"a": SubResource("Resource_rvn0v"),
+"b": 5.0
+}
+
+[sub_resource type="Resource" id="Resource_2oshp"]
+script = ExtResource("5_8r2uc")
+name = &"vector2"
+arguments = {
+"x": SubResource("Resource_d8h3f"),
+"y": 0.0
+}
+
+[sub_resource type="Resource" id="Resource_0c2wv"]
+script = ExtResource("3_pr7ix")
+name = &"set_var_SPEED"
+children = Array[ExtResource("3_pr7ix")]([])
+arguments = {
+"value": SubResource("Resource_2oshp")
+}
+
+[sub_resource type="Resource" id="Resource_o70q5"]
+script = ExtResource("3_pr7ix")
+name = &"if"
+children = Array[ExtResource("3_pr7ix")]([SubResource("Resource_xaay2"), SubResource("Resource_o4uty"), SubResource("Resource_0c2wv")])
+arguments = {
+"condition": SubResource("Resource_udyef")
+}
+
+[sub_resource type="Resource" id="Resource_ywihw"]
+script = ExtResource("3_pr7ix")
+name = &"characterbody2d_move_and_slide"
+children = Array[ExtResource("3_pr7ix")]([])
+arguments = {}
+
+[sub_resource type="Resource" id="Resource_ewikb"]
+script = ExtResource("3_pr7ix")
+name = &"process"
+children = Array[ExtResource("3_pr7ix")]([SubResource("Resource_xe4yi"), SubResource("Resource_68tpo"), SubResource("Resource_o70q5"), SubResource("Resource_ywihw")])
+arguments = {}
+
+[sub_resource type="Resource" id="Resource_ilesm"]
+script = ExtResource("4_wyhhg")
+root = SubResource("Resource_ewikb")
+canvas_position = Vector2(300, 50)
+
+[sub_resource type="Resource" id="Resource_f84it"]
+script = ExtResource("7_hsmaw")
+var_name = "speed"
+var_type = 4
+
+[sub_resource type="Resource" id="Resource_o7t5r"]
+script = ExtResource("7_hsmaw")
+var_name = "SPEED"
+var_type = 5
+
+[sub_resource type="Resource" id="Resource_cf6mb"]
+script = ExtResource("6_t602o")
+script_inherits = "CharacterBody2D"
+block_serialization_trees = Array[ExtResource("4_wyhhg")]([SubResource("Resource_wrep3"), SubResource("Resource_ilesm")])
+variables = Array[ExtResource("7_hsmaw")]([SubResource("Resource_f84it"), SubResource("Resource_o7t5r")])
+generated_script = "extends CharacterBody2D
+
+var speed: String
+
+var SPEED: Vector2
+
+
+func _ready():
+	SPEED = Vector2(-20, 0)
+
+func _process(delta):
+	rotation_degrees += 5
+	position += (SPEED)
+	if (((position).x) < -5000):
+		position = (Vector2(5000, (randf_range(-2000, 2000))))
+		scale = (Vector2((randf_range(0.5, 1)), (randf_range(0.5, 2))))
+		SPEED = (Vector2((((SPEED).x) - 5), 0))
+	move_and_slide()
+
+"
+version = 0
 
 [node name="ROCKS" type="Node2D"]
 
 [node name="rocks" type="CharacterBody2D" parent="."]
-script = ExtResource("1_vpioy")
+position = Vector2(4818, 0)
+script = SubResource("GDScript_m4xu7")
 
 [node name="Sprite2D" type="Sprite2D" parent="rocks"]
 texture = ExtResource("1_27h8i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rocks"]
 position = Vector2(81, 38)
-shape = SubResource("CircleShape2D_71xoe")
+shape = SubResource("CircleShape2D_wwoua")
+
+[node name="BlockCode" type="Node" parent="rocks"]
+script = ExtResource("2_3k3a2")
+block_script = SubResource("Resource_cf6mb")
